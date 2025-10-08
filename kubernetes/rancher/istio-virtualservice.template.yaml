@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: rancher
+spec:
+  gateways:
+  - ${RANCHER_GATEWAY_NAME}
+  hosts:
+  - ${RANCHER_HOSTNAME}
+  http:
+  - route:
+    - destination:
+        host: rancher
+        port:
+          number: 80
+    headers:
+      request:
+        set:
+          x-forwarded-proto: https
