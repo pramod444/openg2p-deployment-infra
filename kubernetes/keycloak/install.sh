@@ -9,7 +9,7 @@ export NS=${NS:-keycloak-system}
 
 kubectl create ns $NS
 
-helm -n $NS upgrade --install keycloak oci://registry-1.docker.io/bitnamicharts/keycloak \
+helm -n $NS upgrade --install keycloak https://openg2p.github.io/openg2p-helm/keycloak \
     -f values-keycloak.yaml \
     $@
 
